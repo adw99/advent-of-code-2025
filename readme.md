@@ -1,1 +1,1 @@
-Advent of Code 20254 in Python
+Advent of Code 2025 in Python
