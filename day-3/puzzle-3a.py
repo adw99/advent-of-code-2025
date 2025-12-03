@@ -9,11 +9,8 @@ def dprint(fs,end='\r\n'):
 
 def bank_max(bank: List[int]) -> int:
     work = sorted(bank[:-1], reverse=True)
-    dprint(f"? {work}")
     d1 = work[0]
     p1 = bank.index(d1)
-    dprint(f"p1: {p1}")
-    dprint(f"> {bank[p1+1:]}")
     d2 = max( bank[p1+1:] )
     bmax = d1*10 + d2
     dprint(f"{bank} -> {bmax}")
