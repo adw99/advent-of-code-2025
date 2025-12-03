@@ -44,8 +44,8 @@ def solution(rot: List[Tuple[str,int]]) -> int:
     return zeroes
 
 if __name__ == '__main__':
-    print(f"*** Event of Code 2025, Day 1, Part 2 ***\n")
-    fname = sys.argv[1] if len(sys.argv) >=2 else 'sample1.txt'
+    print(f"*** Advent of Code 2025, Day 1, Part 2 ***\n")
+    fname = sys.argv[1] if len(sys.argv) >=2 else 'sample.txt'
     if(len(sys.argv) >=3 and sys.argv[2] == 'debug'):
         debug = True
 
