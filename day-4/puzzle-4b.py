@@ -9,11 +9,12 @@ max_y = 0
 
 neighbors = [ (-1,-1),(0,-1),(1,-1),(-1,0),(1,0),(-1,1),(0,1),(1,1)]
 
-def solution(grid:Grid, bales:List[Tuple[int,int]]) -> int:
-    movable = 0
+def move_bales(grid:Grid, bales:List[Tuple[int,int]]) -> List[Tuple[int,int]]:
+    movables = []
 
     for (x,y) in bales:
         n = 0
+        nl = []
         for (dx,dy) in neighbors:
             nx = x + dx
             ny = y + dy
@@ -22,12 +23,28 @@ def solution(grid:Grid, bales:List[Tuple[int,int]]) -> int:
                 if pt == '@':
                     n += 1
         if n<4:
-            movable += 1
+            movables.append( (x,y))
 
-    return movable
+    return movables
+
+def solution(grid:Grid, bales:List[Tuple[int,int]]) -> int:
+    total = 0
+    moved = -1
+    loops = 0
+    while moved != 0:
+        movables = move_bales(grid,bales)
+        total += len(movables)
+        moved = len(movables)
+        print(f"Loop {loops} moved {moved}")
+        loops += 1
+        for m  in movables:
+            (x,y) = m
+            grid.set(x,y,'.')
+            bales.remove(m)
+    return total
 
 if __name__ == '__main__':
-    print(f"*** Advent of Code 2025, Day 4, Part 1 ***\n")
+    print(f"*** Advent of Code 2025, Day 4, Part 2 ***\n")
     fname = sys.argv[1] if len(sys.argv) >=2 else 'sample.txt'
     if(len(sys.argv) >=3 and sys.argv[2] == 'debug'):
         debug = True
@@ -43,7 +60,6 @@ if __name__ == '__main__':
             grid.set(x,y,lines[y][x])
             if lines[y][x] == '@':
                 bales.append( (x,y) )
-    grid.print()
 
     result = solution(grid,bales)
     print(f"Solution: {result}")
