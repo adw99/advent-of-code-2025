@@ -28,7 +28,7 @@ def solution(lines: List[str])->int:
 
 
 if __name__ == '__main__':
-    print(f"*** Advent of Code 2025, Day 4, Part 2 ***\n")
+    print(f"*** Advent of Code 2025, Day 5, Part 1 ***\n")
     fname = sys.argv[1] if len(sys.argv) >=2 else 'sample.txt'
     if(len(sys.argv) >=3 and sys.argv[2] == 'debug'):
         debug = True
