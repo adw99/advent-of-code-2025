@@ -51,10 +51,6 @@ class Grid:
         _ng = pickle.loads(pickle.dumps(self.grid))
         return Grid(_grid=_ng)
 
-
-    def print(self):
-        for y in range(len(self.grid)):
-            for x in range(len(self.grid[0])):
-                print(self.grid[y][x],end='')
-            print(' ')
-        print(' ')        
+    def print_grid(grid):
+        for line in grid:
+            print(''.join([str (i) for i in line]))          
